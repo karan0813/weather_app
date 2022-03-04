@@ -2,8 +2,8 @@ import React from 'react'
 
 const Weather = ({cityname,citytemp,description,icon ,windspeed}) => {
   return (
-      <div className=" w-full p-10 h-90 ">
-          <div className="lg:w-1/3 md:w-1/2 w-fit card-div  h-fit m-auto rounded-lg  shadow-xl ">
+      <div className=" w-full md:p-10 md:mt-0 mt-6 h-90 ">
+          <div className="lg:w-1/3 md:w-1/2 w-screen card-div  h-fit md:m-auto md:rounded-lg  shadow-xl ">
               <h1 className="text-center text-4xl font-bold capitalize p-4">{cityname}</h1>
               <div className="flex w-90  justify-around m-4 h-90 py-5 ">
                   <div className="">

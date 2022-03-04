@@ -10,11 +10,12 @@ function App() {
   const [description, setdescription] = useState("")
   const [windspeed, setwindspeed] = useState("")
   const [serch,setserch]=useState(false)
-  const [icon , seticon]=useState("")
+  const [icon, seticon] = useState("")
+  const [data, setdata] = useState(false)
 
-   const fetchweatherdata = async() => {
+  const fetchweatherdata = async () => {
        let fetchdata = await fetch(`https:api.openweathermap.org/data/2.5/weather?q=${city}&appid=445a2043eb681b7e0a7d590187f36814`)
-       let jsondata = await fetchdata.json() ;
+    let jsondata = await fetchdata.json();
        let { name ,main ,wind } = jsondata;
        setcityname(name)
        setcitytemp(main)
@@ -22,7 +23,7 @@ function App() {
        let details = jsondata.weather[0];
        let {  description, icon } = details;
        setdescription(description)
-     seticon(icon)
+          seticon(icon)
      setserch(false)
      }
      
@@ -48,15 +49,15 @@ function App() {
               setcity(e.target.value);
              }}
           />
-          <button type="submit" className="text-black font-bold hidden" onClick={()=>(setserch(true))}>Search</button>
+          <button type="submit" className="text-black font-bold hidden" onClick={()=>(setserch(true),setdata(true))}>Search</button>
           </form>
                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
           </div>
       </div>
-     <Weather serch={serch} windspeed={windspeed} cityname={cityname} citytemp={citytemp} description={description} icon={icon}/>
-
+     {data && <Weather serch={serch} windspeed={windspeed} cityname={cityname} citytemp={citytemp} description={description} icon={icon}/>}
+     
     </>
   );
 }
